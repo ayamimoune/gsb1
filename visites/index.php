@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Page d'accueil</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style/index.css">
 
 </head>
 <body>

@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
-    <link rel="stylesheet" href="../style/inscription.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
+<div class="header">
+        <a href="../index.php">Retour</a>
+    </div>
 <body>
     <div class="container">
         <h2>Inscription</h2>

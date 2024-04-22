@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Créer un rapport</title>
-    <link rel="stylesheet" href="../style/creerRapport.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <h1>Créer un rapport</h1>

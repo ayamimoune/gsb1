@@ -25,18 +25,22 @@ $medecins = $medecinBD->getAllMedecins();
     <title>Profil des Médecins</title>
     <meta name="Author" content="Aya Mimoune">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link href="../style/profilMedecin.css" type="text/css" rel="stylesheet" media="all">
+    <link href="../style.css" type="text/css" rel="stylesheet" media="all">
 </head>
 <body>
-    <div class="header">
-        <h1>Laboratoire Galaxy Swiss Bourdin</h1>
+<div class="header">
+    <h1>Laboratoire Galaxy Swiss Bourdin</h1>
+    <div class="header-right">
         <button onclick="window.location.href='accueil.php'">Retour</button>
         <button onclick="window.location.href='../controleur/deconnexion.php'">Déconnexion</button>
     </div>
+</div>
 
     <h2>Liste des Médecins</h2>
 
     <div class="content">
+    <input type="text" id="search" placeholder="Rechercher...">
+        <button onclick="searchMedecin()">Rechercher</button>
         <?php if (!empty($medecins)) : ?>
             <table>
                 <thead>
@@ -85,6 +89,32 @@ $medecins = $medecinBD->getAllMedecins();
             // Exemple d'action : rediriger vers un formulaire de contact
              window.location.href = "formulaire_contact.php?dest=" + mail;
         }
+
+    function searchMedecin() {
+        var input = document.getElementById('search').value.toLowerCase();
+        var table = document.querySelector('table');
+        var rows = table.getElementsByTagName('tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var found = false;
+
+            for (var j = 1; j < cells.length - 1; j++) { // Commence à l'index 1 pour exclure la colonne ID et Actions
+                var cellText = cells[j].textContent.toLowerCase();
+                if (cellText.indexOf(input) > -1) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                rows[i].style.display = '';
+            } else {
+                rows[i].style.display = 'none';
+            }
+        }
+    }
+
     </script>
 </body>
 </html>

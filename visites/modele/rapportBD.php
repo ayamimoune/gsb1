@@ -155,6 +155,36 @@ public function modifierRapport($rapport) {
         }
     }
 
-        
+    // Méthode pour rechercher des rapports par motif ou bilan
+public function rechercherRapports($id_visiteur, $keyword) {
+    try {
+        // Requête SQL pour rechercher les rapports par motif ou bilan
+        $req = $this->conn->prepare("SELECT * FROM rapport 
+                                     WHERE id_visiteur = :id_visiteur 
+                                     AND (motif LIKE :keyword OR bilan LIKE :keyword)");
+        $req->bindValue(':id_visiteur', $id_visiteur);
+        $req->bindValue(':keyword', '%' . $keyword . '%'); // Ajouter des wildcards pour rechercher dans le contenu
+        $req->execute();
+
+        $rapports = [];
+        while ($resultat = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rapport = new Rapport(
+                $resultat["id_rapport"],
+                $resultat["date_rapport"],
+                $resultat["motif"],
+                $resultat["bilan"],
+                $resultat['id_visiteur']
+            );
+            $rapports[] = $rapport;
+        }
+
+        return $rapports;
+
+    } catch (PDOException $e) {
+        print "Erreur lors de la recherche des rapports : " . $e->getMessage();
+        die();
+    }
+}
+ 
 }
 ?>

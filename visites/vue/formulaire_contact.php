@@ -5,7 +5,7 @@
     <title>Formulaire de Contact</title>
     <meta name="Author" content="Aya Mimoune">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link href="../style/formulaire_contact.css" type="text/css" rel="stylesheet" media="all">
+    <link href="../style.css" type="text/css" rel="stylesheet" media="all">
 </head>
 <body>
     <div class="header">
